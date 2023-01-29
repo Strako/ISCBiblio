@@ -2,7 +2,7 @@
   ISC Project description:
   
     This project will contain all the files related to the DB, API's(Nodejs) and Frontend 
-    (Amgular) of oue project
+    (Amgular) of our project
     
   Routes and links:
   
