@@ -36,7 +36,7 @@ router.post('/insert-book',verifyToken.verify,(req,res)=>{
     }
 });
 
-router.post('/update-book',verifyToken.verify,(req,res)=>{
+router.put('/update-book',verifyToken.verify,(req,res)=>{
     const {book_id,title,author,quantity} = req.body;
     if(req.data.role == 'admin' || req.data.role == 'user'){
         mysqlConnection.query('UPDATE books SET title = ?, author = ?, quantity = ? WHERE book_id=?',
