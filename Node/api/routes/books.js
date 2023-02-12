@@ -54,7 +54,7 @@ router.post('/update-book',verifyToken.verify,(req,res)=>{
     }
 });
 
-router.post('/delete-book',verifyToken.verify,(req,res)=>{
+router.delete('/delete-book',verifyToken.verify,(req,res)=>{
     const {book_id} = req.body;
     if(req.data.role == 'admin' || req.data.role == 'user'){
         mysqlConnection.query('delete from books where book_id = ?',
