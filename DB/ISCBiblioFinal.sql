@@ -56,3 +56,6 @@ insert into admins (mail,password,role) VALUES('retro@gmail.com','1234567','admi
 insert into admins (mail,password,role) VALUES('fausto@gmail.com','1234567','admin');
 insert into admins (mail,password,role) VALUES('strako@gmail.com','1234567','user');
 
+insert into books (title,author,quantity) VALUES('La trilogia de nueva york','Paul auster','10');
+insert into books (title,author,quantity) VALUES('Ciudades de cristal','Paul auster','20');
+insert into books (title,author,quantity) VALUES('Leviatan','Paul auster','30');
