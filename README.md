@@ -10,3 +10,19 @@
     -Nodejs files: ISCBiblio/Node
     -Angular files: ISCBilio/Angular
     -Jira SCRUM board: https://proyectofinal22.atlassian.net/jira/software/projects/ISC/boards/2
+    
+  How to start backend server:
+    -First import the database located in the "/DB/ISCBiblioFinal.sql"
+    -Then open "Node" folder on Visual Studio Code and type in the terminal 'npm run serve'
+    -Finally the server will start on localhost on port 3000 'localhost:3000'
+
+  How to consume the API:
+
+    -Import the collection inside the '/Postman' folder 
+    -Sign in with a valid user / password to get the token and test the API
+    -Example:
+    
+    	{
+    	     "mail": "strako@gmail.com",
+    	     "password": "1234567"
+    	}
