@@ -17,12 +17,12 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM ",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoic3RyYWtvQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIn0.tvohi2kte1h6PEI8RLAsSsW0oDFwewv8NiMz8AxM7ZU",
 									"type": "string"
 								}
 							]
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"url": {
 							"raw": "localhost:3000/books/get-books",
@@ -89,11 +89,11 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Nuevo lirbo\",\n    \"author\": \"Nuevo autor\",\n    \"quantity\": \"200\"\n}",
+							"raw": "{\n    \"book_id\": \"25\",\n    \"title\": \"Fundacion\",\n    \"author\": \"Issac Asimov\",\n    \"quantity\": \"12\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -101,14 +101,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/books/insert-book",
+							"raw": "localhost:3000/books/update-book",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"books",
-								"insert-book"
+								"update-book"
 							]
 						}
 					},
@@ -127,11 +127,11 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"book_id\": \"15\"\n}",
+							"raw": "{\n    \"book_id\": \"20\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -159,18 +159,21 @@
 			"item": [
 				{
 					"name": "get-admins",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoic3RyYWtvQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIn0.tvohi2kte1h6PEI8RLAsSsW0oDFwewv8NiMz8AxM7ZU",
 									"type": "string"
 								}
 							]
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -244,21 +247,20 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJNYWlsIjoiYXJtYW5kb0BnbWFpbC5jb20iLCJSb2xlIjoiVXNlciJ9.WnLiq1Pe9co0cBPyFU9ELvIQm1P-LBYc7AHIzomYOS0",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoic3RyYWtvQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIn0.tvohi2kte1h6PEI8RLAsSsW0oDFwewv8NiMz8AxM7ZU",
 							"type": "string"
 						}
 					]
 				},
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/userRoute/test",
+					"raw": "localhost:3000/test",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"userRoute",
 						"test"
 					]
 				}
