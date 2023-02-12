@@ -16,7 +16,7 @@
     -First import the database located in the "/DB/ISCBiblioFinal.sql"
     -Then open "Node" folder on Visual Studio Code and open the file '/connection/connection.js' 
     and edit the password attribute 'password' and set it to your own database password
-    -Finally the server will start on localhost on port 3000 'localhost:3000'
+    -Finally run 'npm run serve' and the server will start on localhost on port 3000 'localhost:3000'
 
   How to consume the API:
 
