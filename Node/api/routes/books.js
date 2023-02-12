@@ -4,7 +4,7 @@ const verifyToken = require('../functions/verifyToken');
 const mysqlConnection = require('../connection/connection');
 const { rawListeners } = require('../connection/connection');
 
-router.post('/get-books',verifyToken.verify,(req,res)=>{
+router.get('/get-books',verifyToken.verify,(req,res)=>{
     if(req.data.role == 'admin' || req.data.role == 'user'){
         mysqlConnection.query('select * from books',(error, rows, fields)=>{
             if(!error){

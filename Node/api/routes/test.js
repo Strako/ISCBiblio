@@ -3,7 +3,7 @@ const router = express.Router();
 const verifyToken = require('../functions/verifyToken');
 
 /*redirects the given request to 'verifyToken' function and the recives a req from verifyToken function*/
-router.post('/',verifyToken.verify,(req,res) => {
+router.get('/',verifyToken.verify,(req,res) => {
     if(req.data.role == 'admin'){
     res.json('Secret data');
     console.log(req.data);

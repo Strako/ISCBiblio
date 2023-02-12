@@ -7,7 +7,7 @@ const verifyToken = require('../functions/verifyToken');
 
 
 /*Make a route in the root with the get method*/
-router.post('/get-admins',verifyToken.verify,(req,res)=>{
+router.get('/get-admins',verifyToken.verify,(req,res)=>{
 /*If the role of the given user isnt 'Admin' will not be able to execute the query*/
     if(req.data.role == 'admin'){
 /*Specifies the mysql query*/
