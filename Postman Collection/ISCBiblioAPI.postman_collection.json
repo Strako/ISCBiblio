@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "2fa1b186-e3f6-4a5a-bca2-345219a0c722",
+		"name": "ISCBiblioAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23554282"
+	},
+	"item": [
+		{
+			"name": "CRUD Books",
+			"item": [
+				{
+					"name": "get-books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/books/get-books",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"get-books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert-book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Nuevo lirbo\",\n    \"author\": \"Nuevo autor\",\n    \"quantity\": \"200\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/books/insert-book",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"insert-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Nuevo lirbo\",\n    \"author\": \"Nuevo autor\",\n    \"quantity\": \"200\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/books/insert-book",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"insert-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book_id\": \"15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/books/delete-book",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"delete-book"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CRUD Admins",
+			"item": [
+				{
+					"name": "get-admins",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/admins/get-admins",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admins",
+								"get-admins"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CUD Borrows",
+			"item": []
+		},
+		{
+			"name": "CRUD Members",
+			"item": []
+		},
+		{
+			"name": "Logs",
+			"item": []
+		},
+		{
+			"name": "sign-in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mail\": \"fausto@gmail.com\",\n    \"pasword\": \"1234567\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJNYWlsIjoiYXJtYW5kb0BnbWFpbC5jb20iLCJSb2xlIjoiVXNlciJ9.WnLiq1Pe9co0cBPyFU9ELvIQm1P-LBYc7AHIzomYOS0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/userRoute/test",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"userRoute",
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
