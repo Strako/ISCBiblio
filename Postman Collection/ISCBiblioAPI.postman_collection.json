@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoic3RyYWtvQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIn0.tvohi2kte1h6PEI8RLAsSsW0oDFwewv8NiMz8AxM7ZU",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM",
 									"type": "string"
 								}
 							]
@@ -55,7 +55,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Nuevo lirbo\",\n    \"author\": \"Nuevo autor\",\n    \"quantity\": \"200\"\n}",
+							"raw": "{\n    \"title\": \"Libro perron\",\n    \"author\": \"Alguien rifado\",\n    \"quantity\": \"28\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,7 +84,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM ",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoic3RyYWtvQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIn0.tvohi2kte1h6PEI8RLAsSsW0oDFwewv8NiMz8AxM7ZU",
 									"type": "string"
 								}
 							]
@@ -93,7 +93,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"book_id\": \"25\",\n    \"title\": \"Fundacion\",\n    \"author\": \"Issac Asimov\",\n    \"quantity\": \"12\"\n}",
+							"raw": "{\n    \"book_id\": \"4\",\n    \"title\": \"Imperio\",\n    \"author\": \"Issac Asimov\",\n    \"quantity\": \"46\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -122,7 +122,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM ",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM",
 									"type": "string"
 								}
 							]
@@ -131,7 +131,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"book_id\": \"20\"\n}",
+							"raw": "{\n    \"book_id\": \"4\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
