@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2fa1b186-e3f6-4a5a-bca2-345219a0c722",
+		"_postman_id": "3b0bd908-b994-450b-a1da-c5ce79a00d28",
 		"name": "ISCBiblioAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23554282"
@@ -219,7 +219,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"mail\": \"fausto@gmail.com\",\n    \"pasword\": \"1234567\"\n}",
+					"raw": "{\n    \"mail\": \"fausto@gmail.com\",\n    \"password\": \"1234567\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
