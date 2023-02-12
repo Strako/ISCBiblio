@@ -26,6 +26,7 @@ router.post('/', (req,res) => {
                 res.json({token});
             }else{
                 res.json('Invalid data');
+                console.log(rows);
             }
         }else{
             console.log(error);
