@@ -12,6 +12,7 @@
     -Jira SCRUM board: https://proyectofinal22.atlassian.net/jira/software/projects/ISC/boards/2
     
   How to start backend server:
+  
     -First import the database located in the "/DB/ISCBiblioFinal.sql"
     -Then open "Node" folder on Visual Studio Code and open the file '/connection/connection.js' 
     and edit the password attribute 'password' and set it to your own database password
