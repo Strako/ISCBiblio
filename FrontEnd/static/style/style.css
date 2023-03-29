@@ -1,0 +1,25 @@
+#titulo{
+
+    color:blueviolet;
+}
+.formLogin{
+    text-align: center; /* Centra todo el contenido dentro del elemento padre */
+    max-width: 60%;
+    margin: 0 auto;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh; 
+}
+@media screen and (max-width: 400px){
+    .formLogin{
+        max-width: 60%;
+    }
+    
+}
+#exampleInputEmail1{
+    margin-bottom: 20px;
+}
+#inputPassword{
+    margin-bottom: 20px;
+}
