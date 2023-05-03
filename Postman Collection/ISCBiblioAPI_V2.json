@@ -1,0 +1,312 @@
+{
+	"info": {
+		"_postman_id": "565e238d-4d8f-4c60-bc45-5dab57ac29c4",
+		"name": "ISCBiblioAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23554282"
+	},
+	"item": [
+		{
+			"name": "CRUD Books",
+			"item": [
+				{
+					"name": "get-books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/books/get-books",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"get-books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert-book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Libro perron\",\n    \"author\": \"Alguien rifado\",\n    \"quantity\": \"28\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/books/insert-book",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"insert-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoic3RyYWtvQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIn0.tvohi2kte1h6PEI8RLAsSsW0oDFwewv8NiMz8AxM7ZU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book_id\": \"4\",\n    \"title\": \"Imperio\",\n    \"author\": \"Issac Asimov\",\n    \"quantity\": \"46\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/books/update-book",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"update-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book_id\": \"4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/books/delete-book",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"delete-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-book",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoiZmF1c3RvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.Z-uyJLjx3zBr4zJE31UkQaU1M7vd7tmvY_yY8FNJDMM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book_id\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/books/get-book",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"get-book"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CRUD Admins",
+			"item": [
+				{
+					"name": "get-admins",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoic3RyYWtvQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIn0.tvohi2kte1h6PEI8RLAsSsW0oDFwewv8NiMz8AxM7ZU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/admins/get-admins",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admins",
+								"get-admins"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CUD Borrows",
+			"item": []
+		},
+		{
+			"name": "CRUD Members",
+			"item": []
+		},
+		{
+			"name": "Logs",
+			"item": []
+		},
+		{
+			"name": "sign-in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mail\": \"fausto@gmail.com\",\n    \"password\": \"1234567\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJtYWlsIjoic3RyYWtvQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIn0.tvohi2kte1h6PEI8RLAsSsW0oDFwewv8NiMz8AxM7ZU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/test",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
