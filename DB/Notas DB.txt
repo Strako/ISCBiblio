@@ -1,0 +1,12 @@
+CREATE TRIGGER decrement_quantity
+AFTER INSERT ON borrows FOR EACH ROW
+UPDATE books SET books.quantity = books.quantity - 1 WHERE book_id = new.book_id;
+
+
+CREATE TRIGGER increment_quantity
+AFTER UPDATE ON borrows FOR EACH ROW
+UPDATE books SET books.quantity = books.quantity + 1 WHERE book_id = new.book_id;
+
+Para actualizar la fecha de un prestamo joczan me tiene que enviar la fecha de regreso el id del 
+libro y el id del registro a modificar
+update borrows set return_date = "2020-10-12", book_id = 1 WHERE borrow_id = 1;

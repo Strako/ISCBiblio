@@ -4,6 +4,23 @@ const verifyToken = require('../functions/verifyToken');
 const mysqlConnection = require('../connection/connection');
 const { rawListeners } = require('../connection/connection');
 
+router.get('/get-book',verifyToken.verify,(req,res)=>{
+    const {book_id} = req.body;
+    if(req.data.role == 'admin' || req.data.role == 'user'){
+        mysqlConnection.query('select * from books where book_id = ?',
+        [book_id],
+        (error, rows, fields)=>{
+            if(!error){
+                res.json(rows);
+            }else{
+                console.log(error);
+            }
+        })
+    }else{
+        res.json('You dont have enogh permisions');
+    }
+});
+
 router.get('/get-books',verifyToken.verify,(req,res)=>{
     if(req.data.role == 'admin' || req.data.role == 'user'){
         mysqlConnection.query('select * from books',(error, rows, fields)=>{

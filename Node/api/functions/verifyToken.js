@@ -11,7 +11,7 @@ verify(req,res, next){
             const token = req.headers.authorization.substr(7);
     /*Verify if the token isnt empty*/
             if(token!==''){
-    /*Decrypts the conect of the token making use of the secret word and send the content in a req for the next method*/              
+    /*Decrypts the content of the token making use of the secret word and send the content in a req for the next method*/              
                 const content = jwt.verify(token,'Testing');
                 req.data = content;
                 next();
