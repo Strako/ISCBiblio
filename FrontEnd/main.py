@@ -1,7 +1,7 @@
 #import modules an libraries from flask
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 import requests
-
+import jwt
 
 #Create a Flask instance
 app = Flask(__name__)
@@ -18,6 +18,13 @@ def isLogged():
         return True
     else:
         return False
+
+
+def decodeToken(token):
+    try:
+        return jwt.decode(token, "Testing", algorithms=['HS256'])
+    except:
+        return False
 #------------------Routes------------------
 
 #login route
@@ -25,7 +32,7 @@ def isLogged():
 def login():
     if isLogged():
         return redirect(url_for('index'))
-    else: 
+    else:
         #if exists a req with method POST, get the data from the form and send to backend to validate
         if request.method == 'POST':
             usr = request.form['usrname']
@@ -47,6 +54,7 @@ def login():
                     session['logged_in'] = True
                     session['token'] = token
                     session['user'] = usr
+                    session['role'] = decodeToken(token)['role']
                     return redirect(url_for('index'))
                 elif res.status_code == 401:
                     flash('Usuario o contraseña incorrectos')
@@ -71,7 +79,20 @@ def logout():
 @app.route('/')
 def index():
     if isLogged():
-        return render_template('index.html')
+        return render_template('index.html', user=session['user'], role=session['role'])
+    return redirect(url_for('login'))
+
+
+@app.route('/Libros')
+def books():
+    if isLogged():
+        return render_template('Libros.html', user=session['user'], role=session['role'])
+    return redirect(url_for('login'))
+
+@app.route('/Prestamos')
+def prestamos():
+    if isLogged():
+        return render_template('Prestamos.html', user=session['user'], role=session['role'])
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
