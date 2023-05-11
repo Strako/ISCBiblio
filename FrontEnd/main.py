@@ -43,24 +43,22 @@ def login():
                 "password": passwd
             }
             #try send the data to the backend using the API_URL
-            try:
                 #make a request to the backend
-                res = requests.post(api_url + 'signin', json=dataSession)
-                #manage res with the status code
-                if res.status_code == 200:
-                    #get token from response data
-                    token = res.json()['token']
-                    #set session data and put the token in cookie session
-                    session['logged_in'] = True
-                    session['token'] = token
-                    session['user'] = usr
-                    session['role'] = decodeToken(token)['role']
-                    return redirect(url_for('index'))
-                elif res.status_code == 401:
-                    flash('Usuario o contraseña incorrectos')
-                    return render_template('login.html')
-            except:
-                #if the backend is not available, show a message
+            res = requests.post(api_url + 'signin', json=dataSession)
+            #manage res with the status code
+            if res.status_code == 200:
+                #get token from response data
+                token = res.json()['token']
+                #set session data and put the token in cookie session
+                session['logged_in'] = True
+                session['token'] = token
+                session['user'] = usr
+                session['role'] = decodeToken(token)['role']
+                return redirect(url_for('index'))
+            elif res.status_code == 401:
+                flash('Usuario o contraseña incorrectos')
+                return render_template('login.html')
+            elif res.status_code == 500:
                 flash('Error al conectar con el servidor')
                 return render_template('login.html')
         #if not req, render the login page using render_template

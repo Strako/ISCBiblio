@@ -29,7 +29,7 @@
                 <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
 
                 </div>
-                <div class="col bg-white p-5 rounded-end">
+                <div class="col bg-white p-5 rounded-end logincontainer">
                     <div class="text-end">
                         <img src="/static/img/logo.png" width="48" alt="">
                     </div>
@@ -49,11 +49,19 @@
                             <input class="btn btn-primary" type="submit" name="submit" value="login">
                         </div>
                     </form>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <div class="alert-container">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for msg in messages %}
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>Error al iniciar sessión!</strong> {{msg}}.
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
                     </div>
                 </div>
             </div>
