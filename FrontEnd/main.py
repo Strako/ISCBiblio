@@ -95,5 +95,23 @@ def prestamos():
         return render_template('Prestamos.html', user=session['user'], role=session['role'])
     return redirect(url_for('login'))
 
+@app.route('/Auditorias')
+def Auditorias():
+    if isLogged():
+        return render_template('Auditorias.html', user=session['user'], role=session['role'])
+    return redirect(url_for('login'))
+
+@app.route('/Usuarios')
+def Usuarios():
+    if isLogged():
+        return render_template('Usuarios.html', user=session['user'], role=session['role'])
+    return redirect(url_for('login'))
+
+@app.route('/Administrador')
+def Administrador():
+    if isLogged():
+        return render_template('Administrador.html', user=session['user'], role=session['role'])
+    return redirect(url_for('login'))
+
 if __name__ == '__main__':
     app.run(port=5500, debug=True)
