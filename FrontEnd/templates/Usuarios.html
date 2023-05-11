@@ -37,7 +37,7 @@
           {%endif%}
           </ul>
           <img src="/static/img/icono_usuario.png" alt="" width="35">
-          <span class="navbar-text">
+          <span class="navbar-text" style="padding-left:1%; padding-right:1% ">
             {{user}}    
           </span> 
           <button class="btn btn-primary"><a class="nav-link" href="/logout">Log out</a></button>  
@@ -88,8 +88,18 @@
                      <nav class="navbar navbar-expand-lg bg-body-tertiary">
                       <div class="container-fluid">
                         <a class="navbar-brand" href="#">Tabla Usuarios</a>
-                            <button class="btn btn-outline-success" type="submit">Agregar</button>
-                          </form>
+                        <form class="form-inline">
+                          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  
+                          <span class="navbar-text" style="padding-left:1%">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                          </span> 
+  
+                          <span class="navbar-text" style="padding-left:1%; padding-right:1% ">
+                            <a class="btn btn-primary" href="#" role="button">Agregar</a>
+                          </span> 
+  
+                        </form>
                         </div>
                       </div>
                     </nav>
