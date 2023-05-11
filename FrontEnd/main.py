@@ -79,7 +79,8 @@ def logout():
 @app.route('/')
 def index():
     if isLogged():
-        return render_template('index.html', user=session['user'], role=session['role'])
+        current="index"
+        return render_template('index.html', user=session['user'], role=session['role'],page = current)
     return redirect(url_for('login'))
 
 
@@ -101,10 +102,11 @@ def Auditorias():
         return render_template('Auditorias.html', user=session['user'], role=session['role'])
     return redirect(url_for('login'))
 
-@app.route('/Usuarios')
-def Usuarios():
+
+@app.route('/Clientes')
+def Clientes():
     if isLogged():
-        return render_template('Usuarios.html', user=session['user'], role=session['role'])
+        return render_template('Clientes.html', user=session['user'], role=session['role'])
     return redirect(url_for('login'))
 
 @app.route('/Administrador')

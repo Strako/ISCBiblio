@@ -3,7 +3,7 @@ const mysqlConnection = mysql.createConnection(
 {
 host:'localhost',
 user: 'root',
-password: '01110110',
+password: '04Enero2022',
 database: 'ISCBiblio',
 port: '3306'
 });
