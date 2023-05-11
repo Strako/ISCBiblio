@@ -21,6 +21,8 @@ app.use('/test', test);
 const books = require('./api/routes/books');
 app.use('/books', books);
 
+const members = require('./api/routes/members');
+app.use('/members', members);
 
 
 module.exports = app;
