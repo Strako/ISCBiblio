@@ -25,7 +25,7 @@ router.post('/', (req,res) => {
 /*Send a reply with the encrypted token*/
                 res.json({token});
             }else{
-                res.json('Invalid data');
+                res.status(401).json('Invalid data');
                 console.log(rows);
             }
         }else{
