@@ -3,6 +3,7 @@ const router = express.Router();
 const verifyToken = require('../functions/verifyToken');
 const mysqlConnection = require('../connection/connection');
 const { rawListeners } = require('../connection/connection');
+const notPerms = require('./messages');
 
 router.post('/get-member', verifyToken.verify, (req, res) => {
     const { member_id } = req.body;
@@ -17,7 +18,7 @@ router.post('/get-member', verifyToken.verify, (req, res) => {
                 }
             })
     } else {
-        res.json('You dont have enogh permisions');
+        res.json(notPerms);
     }
 });
 
@@ -32,7 +33,7 @@ router.get('/get-members', verifyToken.verify, (req, res) => {
                 }
             })
     } else {
-        res.json('You dont have enogh permisions');
+        res.json(notPerms);
     }
 });
 
@@ -50,7 +51,7 @@ router.post('/insert-member', verifyToken.verify, (req, res) => {
                 }
             })
     } else {
-        res.json('You dont have enogh permisions');
+        res.json(notPerms);
     }
 });
 
@@ -68,7 +69,7 @@ router.put('/update-member',verifyToken.verify,(req,res)=>{
             }
         })
     }else{
-        res.json('You dont have enogh permisions');
+        res.json(notPerms);
     }
 });
 
@@ -87,7 +88,7 @@ router.delete('/delete-member',verifyToken.verify,(req,res)=>{
             }
         })
     }else{
-        res.json('You dont have enogh permisions');
+        res.json(notPerms);
     }
 });
 

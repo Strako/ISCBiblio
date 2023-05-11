@@ -3,6 +3,7 @@ const router = express.Router();
 const mysqlConnection = require('../connection/connection');
 //Importing verifyToken function
 const verifyToken = require('../functions/verifyToken');
+const notPerms = require('./messages');
 
 
 
@@ -20,7 +21,7 @@ router.get('/get-admins',verifyToken.verify,(req,res)=>{
         }
     })
     }else{
-        res.json('You dont have enough permissions');
+        res.json(notPerms);
     }
 });
 
