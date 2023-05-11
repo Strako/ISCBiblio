@@ -24,5 +24,8 @@ app.use('/books', books);
 const members = require('./api/routes/members');
 app.use('/members', members);
 
+const borrows = require ('./api/routes/borrows');
+app.use('/borrows', borrows);
+
 
 module.exports = app;

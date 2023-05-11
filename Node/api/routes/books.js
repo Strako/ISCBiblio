@@ -3,6 +3,8 @@ const router = express.Router();
 const verifyToken = require('../functions/verifyToken');
 const mysqlConnection = require('../connection/connection');
 const { rawListeners } = require('../connection/connection');
+const notPerms = require('./messages');
+
 
 router.post('/get-book',verifyToken.verify,(req,res)=>{
     const {book_id} = req.body;
@@ -17,7 +19,7 @@ router.post('/get-book',verifyToken.verify,(req,res)=>{
             }
         })
     }else{
-        res.json('You dont have enogh permisions');
+        res.json(notPerms);
     }
 });
 
@@ -50,7 +52,7 @@ router.post('/insert-book',verifyToken.verify,(req,res)=>{
             }
         })
     }else{
-        res.json('You dont have enogh permisions');
+        res.json(notPerms);
     }
 });
 
