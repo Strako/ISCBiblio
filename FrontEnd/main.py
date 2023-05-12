@@ -25,6 +25,9 @@ def decodeToken(token):
         return jwt.decode(token, "Testing", algorithms=['HS256'])
     except:
         return False
+
+def getToken():
+    return session['token']
 #------------------Routes------------------
 
 #login route
@@ -112,6 +115,42 @@ def Administrador():
     if isLogged():
         return render_template('Administrador.html', user=session['user'], role=session['role'])
     return redirect(url_for('login'))
+
+
+"""#?routes for get data from API"""
+@app.route('/getBooks', methods=['GET'])
+def getBooks():
+    token = getToken()
+    headers={
+        "Authorization": "Bearer " + token
+    }
+    res = requests.get(url='http://localhost:3000/books/get-books', headers=headers)
+
+    if res.status_code == 200:
+        data = res.json()
+        return jsonify(data)
+    # Hacer algo con la respuesta JSON
+    else:
+        print("Error en la solicitud:", res.status_code)
+        return jsonify('error al conectar con el servidor')
+
+@app.route('/searchBook', methods=['POST'])
+def searchBook():
+    token = getToken()
+    headers = {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+    }
+    bookID = request.form['search']
+    res = requests.post(url='http://localhost:3000/books/get-book', headers=headers, json={"book_id": bookID})
+
+    if res.status_code == 200:
+        data = res.json()
+        return jsonify(data)
+    # Hacer algo con la respuesta JSON
+    else:
+        print("Error en la solicitud:", res.status_code)
+        return jsonify('error al conectar con el servidor')
 
 if __name__ == '__main__':
     app.run(port=5500, debug=True)
