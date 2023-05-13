@@ -4,7 +4,7 @@ const verifyToken = require('../functions/verifyToken');
 const mysqlConnection = require('../connection/connection');
 const { rawListeners } = require('../connection/connection');
 const notPerms = require('./messages'); 
-
+const badJson = require('./messages');
 router.post('/get-borrow', verifyToken.verify, (req, res) => {
     const { borrow_id } = req.body;
     if (req.data.role == 'admin' || req.data.role == 'user'){
@@ -47,6 +47,7 @@ router.post('/insert-borrow', verifyToken.verify, (req, res) => {
             if (!error){
                 res.json(rows);
             } else {
+                res.status(401).json();
                 console.log(error);
             }
         })

@@ -64,7 +64,7 @@ router.put('/update-member',verifyToken.verify,(req,res)=>{
             if(!error && result.affectedRows > 0){
                 res.json('succesfully updated member');
             }else{
-                res.status(401).json('Malformed JSON or book_id wont exit');
+                res.status(401).json('Malformed JSON or member_id wont exit');
                 console.log(error);
             }
         })
