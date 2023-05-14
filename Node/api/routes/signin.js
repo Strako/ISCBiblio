@@ -13,7 +13,7 @@ router.post('/', (req,res) => {
 /*Specifies the query and send the body arguments as parameters*/    
     mysqlConnection.query('select mail, role from admins where mail = ? and password = ?',
     [mail,password],
-     (error,rows,fields) => {
+     (error,rows) => {
 /*Verify if and error is present, if no procceds*/
         if(!error){
 /*If the content of the rows is greater than 0 save the results on 'data', otherwise send a reply with 'Invalid data'*/            
