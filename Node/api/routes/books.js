@@ -40,21 +40,19 @@ router.get('/get-books',verifyToken.verify,(req,res)=>{
 
 router.post('/insert-book',verifyToken.verify,(req,res)=>{
     const {title,author,quantity} = req.body;
-    console.log(req.data.role);
     if(req.data.role == 'admin' || req.data.role == 'user'){
         mysqlConnection.query('insert into books (title,author,quantity) values (?,?,?)',
         [title,author,quantity],
-        (error, result)=>{
+        (error, rows)=>{
             if(!error){
                 console.log(messages.addedBook);
-                res.json(result);
+                res.json(rows);
             }else{
                 res.status(401).json(messages.badJson);
                 console.log(error);
             }
         })
     }else{
-        
         res.json(messages.notPerms);
     }
 });
@@ -66,7 +64,8 @@ router.put('/update-book',verifyToken.verify,(req,res)=>{
         [title,author,quantity,book_id],
         (error, result)=>{
             if(!error && result.affectedRows > 0){
-                res.json(messages.updBook);
+                console.log(messages.updBook);
+                res.json(result);
             }else{
                 res.status(401).json(messages.badJson + ' or book_id wont exit');
                 console.log(error);
@@ -85,8 +84,8 @@ router.delete('/delete-book',verifyToken.verify,(req,res)=>{
         [book_id],
         (error, result)=>{
             if(!error && result.affectedRows > 0){
-                res.json(messages.delBook);
-                console.log()
+                console.log(messages.delBook);
+                res.json(result);
             }else{
                 res.status(401).json(messages.badJson +' or book_id wont exist');
                 console.log(error);
