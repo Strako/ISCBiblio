@@ -19,9 +19,7 @@ $(document).ready(function() {
               <tr bookId="${book.book_id}">
                 <th>${book.book_id}</th>
                 <th>
-                  <a class="book-item">
                     ${book.title}
-                  </a>
                 </th>
                 <th>${book.author}</th>
                 <th>${book.quantity}</th>
@@ -76,9 +74,7 @@ $(document).ready(function() {
                 <tr bookId="${book.book_id}">
                   <th>${book.book_id}</th>
                   <th>
-                    <a class="book-item">
                       ${book.title}
-                    </a>
                   </th>
                   <th>${book.author}</th>
                   <th>${book.quantity}</th>
