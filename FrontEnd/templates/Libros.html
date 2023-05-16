@@ -17,6 +17,14 @@
                     <span class="navbar-text" style="padding-left:1%">
                     </span>
 
+                    <span class="navbar-text" style="padding-left:1%; padding-right:1% ">
+                      <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addBookModal">Agregar</a>
+                    </span>
+                    </form>
+                </div>
+              </nav>
+
+                    <!----Nodal Nuevo Libro------>
 
                     <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -28,7 +36,23 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            ...
+                          
+                            <form>
+                              <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Titulo</label>
+                                <input class="form-control" type="text" placeholder="Nombre del libro" aria-label="default input example">
+                                <div id="emailHelp" class="form-text">Aqui escribe el nombre del nuevo libro.</div>
+                              </div>
+                              <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Autor</label>
+                                <input class="form-control" type="text" placeholder="Nombre del autor" aria-label="default input example">
+                              </div>
+                              <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Cantidad</label>
+                                <input class="form-control" type="number" placeholder="Cantidad de libros" aria-label="default input example">
+                              </div>
+                            </form>
+
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -38,14 +62,76 @@
                       </div>
                     </div>
 
-                    <span class="navbar-text" style="padding-left:1%; padding-right:1% ">
-                      <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addBookModal">Agregar</a>
-                    </span>
-                  </form>
-                    </form>
+                 <!----Fin nodal Nuevo Libro------>
+
+                 <!----Nodal Editar------>
+
+                   <div class="modal fade" id="editBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Editar libro</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          
+                          <form>
+                            <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Nuevo titulo</label>
+                              <input class="form-control" type="text" placeholder="Nombre del libro" aria-label="default input example">
+                              <div id="emailHelp" class="form-text">Aqui escribe el nombre del nuevo libro.</div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Nuevo Autor</label>
+                              <input class="form-control" type="text" placeholder="Nombre del autor" aria-label="default input example">
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Nueva cantidad</label>
+                              <input class="form-control" type="number" placeholder="Cantidad de libros" aria-label="default input example">
+                            </div>
+                          </form>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                          <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+              <!----Fin de Nodal Editar------>
+
+               <!----Nodal Eliminar------>
+
+               <div class="modal fade" id="deleteBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Eliminar libro</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                  
+                        <div class="mb-3">
+                          <div id="emailHelp" class="form-text">Estas seguro que deseas Eliminar.</div>
+                        </div>              
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-primary">Eliminar</button>
+                    </div>
                   </div>
                 </div>
-              </nav>
+              </div>
+
+          <!----Fin de Nodal Eliminar------>
+
               <!--fin navbar-->
               <tr>
                 <th scope="col">ID Libro</th>
