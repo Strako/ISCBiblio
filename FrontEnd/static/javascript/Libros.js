@@ -142,7 +142,7 @@ $(document).ready(function() {
       // Obtener el id del libro
       bookId = $(this).closest('tr').attr('bookId');
       $('#editBookModal').attr('data-bookId', bookId);
-      console.log("bookId", bookId);
+      //console.log("bookId", bookId);
       $('#editBookModal').modal('show');
     });
     //function to edit a book
@@ -178,7 +178,7 @@ $(document).ready(function() {
     $(document).on('click', '#deleteBookButton', function(e) {
       bookId = $(this).closest('tr').attr('bookId');
       $('#deleteBookModal').attr('data-bookId', bookId);
-      console.log("bookId", bookId);
+      //console.log("bookId", bookId);
       $('#deleteBookModal').modal('show');
     });
     //function to delete a book
@@ -187,7 +187,7 @@ $(document).ready(function() {
       let postData = {
         "book_id": bookId
       };
-      console.log(postData);
+      //console.log(postData);
       //se hace la peticion ajax para eliminar el libro
       $.ajax({
         url: 'http://localhost:5500/deleteBook',
