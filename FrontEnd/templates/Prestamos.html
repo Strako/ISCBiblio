@@ -11,47 +11,79 @@
               <!-- navbar-->
               <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                  <a class="navbar-brand">Tabla libros</a>
+                  <a class="navbar-brand">Tabla Prestamos</a>
                   <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <span class="navbar-text" style="padding-left:1%">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </span>
-                    <span class="navbar-text" style="padding-left:1%; padding-right:1% ">
-                      <a class="btn btn-primary" href="#" role="button">Agregar</a>
-                    </span>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Escribe un ID para buscar" aria-label="Search">
+                  </span>
+
+                  <span class="navbar-text" style="padding-left:1%; padding-right:1% ">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addBookModal">Agregar</a>
+                  </span>
                   </form>
-                    </form>
-                  </div>
-                </div>
-              </nav>
+              </div>
+            </nav>
+
+ <!----Nodal Prestamos------>
+
+ <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Prestamos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">ID Administrador</label>
+            <input class="form-control" type="number" placeholder="ID del adminitrador" aria-label="default input example">
+            <div id="emailHelp" class="form-text">Aqui escribe el ID del nuevo Prestamo.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Fecha de prestamo</label>
+            <input class="form-control" type="date" placeholder="Fecha del prestamo" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Fecha de regreso</label>
+            <input class="form-control" type="date" placeholder="Fecha del regreso" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">ID libro</label>
+            <input class="form-control" type="number" placeholder="ID del libro" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">ID Miembro</label>
+            <input class="form-control" type="number" placeholder="ID del Miembro" aria-label="default input example">
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button id="addBook" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!----Fin nodal Prestamos------>
+
               <!--fin navbar-->
               <tr>
-                <th scope="col">book_id </th>
-                <th scope="col">title </th>
-                <th scope="col">author</th>
-                <th scope="col">quantity</th>
+                <th scope="col">ID Prestamos</th>
+                <th scope="col">ID Administrador</th>
+                <th scope="col">Fecha de prestamo</th>
+                <th scope="col">Fecha de regreso</th>
+                <th scope="col">ID Libro</th>
+                <th scope="col">ID Miembro</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+            <tbody >
+
             </tbody>
           </table>
         </div>
