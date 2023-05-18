@@ -36,27 +36,27 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                          
+
                             <form>
                               <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Titulo</label>
-                                <input class="form-control" type="text" placeholder="Nombre del libro" aria-label="default input example">
+                                <input class="form-control" id="titulo" type="text" placeholder="Nombre del libro" aria-label="default input example">
                                 <div id="emailHelp" class="form-text">Aqui escribe el nombre del nuevo libro.</div>
                               </div>
                               <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Autor</label>
-                                <input class="form-control" type="text" placeholder="Nombre del autor" aria-label="default input example">
+                                <input class="form-control" id="autor" type="text" placeholder="Nombre del autor" aria-label="default input example">
                               </div>
                               <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Cantidad</label>
-                                <input class="form-control" type="number" placeholder="Cantidad de libros" aria-label="default input example">
+                                <input class="form-control" id="cant" type="number" placeholder="Cantidad de libros" aria-label="default input example">
                               </div>
                             </form>
 
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
+                            <button type="button" id="addBook" class="btn btn-primary">Guardar</button>
                           </div>
                         </div>
                       </div>
@@ -76,27 +76,27 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          
+
                           <form>
                             <div class="mb-3">
                               <label for="exampleInputEmail1" class="form-label">Nuevo titulo</label>
-                              <input class="form-control" type="text" placeholder="Nombre del libro" aria-label="default input example">
+                              <input class="form-control" id="newTitle" type="text" placeholder="Nombre del libro" aria-label="default input example">
                               <div id="emailHelp" class="form-text">Aqui escribe el nombre del nuevo libro.</div>
                             </div>
                             <div class="mb-3">
                               <label for="exampleInputEmail1" class="form-label">Nuevo Autor</label>
-                              <input class="form-control" type="text" placeholder="Nombre del autor" aria-label="default input example">
+                              <input class="form-control" id="newAuthor" type="text" placeholder="Nombre del autor" aria-label="default input example">
                             </div>
                             <div class="mb-3">
                               <label for="exampleInputEmail1" class="form-label">Nueva cantidad</label>
-                              <input class="form-control" type="number" placeholder="Cantidad de libros" aria-label="default input example">
+                              <input class="form-control" id="newCant" type="number" placeholder="Cantidad de libros" aria-label="default input example">
                             </div>
                           </form>
 
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                          <button type="button" class="btn btn-primary">Guardar</button>
+                          <button type="button" id="saveChangesBook" class="btn btn-primary">Guardar</button>
                         </div>
                       </div>
                     </div>
@@ -116,15 +116,15 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                  
+
                         <div class="mb-3">
-                          <div id="emailHelp" class="form-text">Estas seguro que deseas Eliminar.</div>
-                        </div>              
+                          <div id="emailHelp" class="form-text">¿Estas seguro que deseas Eliminar?</div>
+                        </div>
 
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                      <button type="button" class="btn btn-primary">Eliminar</button>
+                      <button type="button" id="deleteBook" class="btn btn-primary">Eliminar</button>
                     </div>
                   </div>
                 </div>

@@ -152,5 +152,58 @@ def searchBook():
         print("Error en la solicitud:", res.status_code)
         return jsonify('error al conectar con el servidor')
 
+
+@app.route('/addBook', methods=['POST'])
+def addBook():
+    data = request.get_json()
+    token = getToken()
+    headers = {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+    }
+    #print(data)
+    res = requests.post(
+        url='http://localhost:3000/books/insert-book', headers=headers, json=data)
+    if res.status_code == 200:
+        return jsonify('ok')
+    else:
+        print("Error en la solicitud:", res.status_code)
+        return jsonify('error al conectar con el servidor')
+
+@app.route('/updateBook', methods=['POST'])
+def updateBook():
+    data = request.get_json()
+    token = getToken()
+    headers = {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+    }
+    #print(data)
+    res = requests.put(
+        url='http://localhost:3000/books/update-book', headers=headers, json=data)
+    if res.status_code == 200:
+        return jsonify('ok')
+    else:
+        #print("Error en la solicitud:", res.status_code)
+        return jsonify('error al conectar con el servidor')
+
+
+@app.route('/deleteBook', methods=['POST'])
+def deleteBook():
+    data = request.get_json()
+    token = getToken()
+    headers = {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+    }
+    print(data)
+    res = requests.delete(
+        url='http://localhost:3000/books/delete-book', headers=headers, json=data)
+    if res.status_code == 200:
+        return jsonify('ok')
+    else:
+        #print("Error en la solicitud:", res.status_code)
+        return jsonify('error al conectar con el servidor')
+
 if __name__ == '__main__':
     app.run(port=5500, debug=True)
