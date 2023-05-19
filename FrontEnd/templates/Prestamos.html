@@ -13,67 +13,115 @@
                 <div class="container-fluid">
                   <a class="navbar-brand">Tabla Prestamos</a>
                   <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Escribe un ID para buscar" aria-label="Search">
+                    <input class="form-control mr-sm-2" id="searchBorrow" type="search" placeholder="Escribe un ID para buscar" aria-label="Search">
                   </span>
 
                   <span class="navbar-text" style="padding-left:1%; padding-right:1% ">
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addBookModal">Agregar</a>
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addBorrowModal">Registrar prestamo</a>
                   </span>
                   </form>
+                </div>
+              </nav>
+
+            <!----Nodal Prestamos------>
+
+              <div class="modal fade" id="addBorrowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Prestamo</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">ID Administrador</label>
+                          <input class="form-control" id="adminId" type="number" placeholder="ID del adminitrador" aria-label="default input example" required>
+                          <div id="emailHelp" class="form-text">A continuación introduce los datos del prestamo.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Fecha de prestamo</label>
+                          <input class="form-control" id="borrowDate" type="date" placeholder="Fecha del prestamo" aria-label="default input example" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Fecha de regreso</label>
+                          <input class="form-control" id="returnDate" type="date" placeholder="Fecha del regreso" aria-label="default input example">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">ID libro</label>
+                          <input class="form-control" id="bookId" type="number" placeholder="ID del libro" aria-label="default input example" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">ID Lector</label>
+                          <input class="form-control" id="memberId" type="number" placeholder="ID del Lector" aria-label="default input example" required>
+                        </div>
+                      </form>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="regBorrow" class="btn btn-primary">Registrar prestamo</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </nav>
 
- <!----Nodal Prestamos------>
+              <!----Fin nodal Prestamos------>
 
- <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Prestamos</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      
-        <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">ID Administrador</label>
-            <input class="form-control" type="number" placeholder="ID del adminitrador" aria-label="default input example">
-            <div id="emailHelp" class="form-text">Aqui escribe el ID del nuevo Prestamo.</div>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Fecha de prestamo</label>
-            <input class="form-control" type="date" placeholder="Fecha del prestamo" aria-label="default input example">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Fecha de regreso</label>
-            <input class="form-control" type="date" placeholder="Fecha del regreso" aria-label="default input example">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">ID libro</label>
-            <input class="form-control" type="number" placeholder="ID del libro" aria-label="default input example">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">ID Miembro</label>
-            <input class="form-control" type="number" placeholder="ID del Miembro" aria-label="default input example">
-          </div>
-        </form>
+              <!----Nodal editar Prestamos------>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button id="addBook" class="btn btn-primary">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
+              <div class="modal fade" id="editBorrowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Editar prestamo</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">ID Administrador</label>
+                          <input class="form-control" id="newAdminId" type="number" placeholder="ID del adminitrador" aria-label="default input example" required>
+                          <div id="emailHelp" class="form-text">A continuación introduce los datos del prestamo.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Fecha de prestamo</label>
+                          <input class="form-control" id="newBorrowDate" type="date" placeholder="Fecha del prestamo" aria-label="default input example" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Fecha de regreso</label>
+                          <input class="form-control" id="newReturnDate" type="date" placeholder="Fecha del regreso" aria-label="default input example">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">ID libro</label>
+                          <input class="form-control" id="newBookId" type="number" placeholder="ID del libro" aria-label="default input example" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">ID Lector</label>
+                          <input class="form-control" id="newMemberId" type="number" placeholder="ID del Lector" aria-label="default input example" required>
+                        </div>
+                      </form>
 
-<!----Fin nodal Prestamos------>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="saveEditBorrow" class="btn btn-primary">Registrar prestamo</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!----Fin nodal editar Prestamos------>
+
+
 
               <!--fin navbar-->
               <tr>
-                <th scope="col">ID Prestamos</th>
+                <th scope="col">ID Prestamo</th>
                 <th scope="col">ID Administrador</th>
                 <th scope="col">Fecha de prestamo</th>
                 <th scope="col">Fecha de regreso</th>
@@ -82,7 +130,7 @@
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
-            <tbody >
+            <tbody id="borrows">
 
             </tbody>
           </table>
@@ -91,5 +139,7 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript" src="{{url_for('static', filename='javascript/Borrows.js')}}"></script>
 <!-- fin Table-->
 {%endblock%}

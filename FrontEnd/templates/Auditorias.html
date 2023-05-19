@@ -11,7 +11,7 @@
               <!-- navbar-->
               <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                  <a class="navbar-brand">Tabla Auditorías</a>
+                  <a class="navbar-brand">Movimientos en el sistema</a>
                   <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     </span>
@@ -22,12 +22,11 @@
               </nav>
               <!--fin navbar-->
               <tr>
-                <th scope="col">ID Log</th>
-                <th scope="col">Log</th>
-                <th scope="col">Acciones</th>
+                <th scope="col">ID del registro</th>
+                <th scope="col">Resumen</th>
               </tr>
             </thead>
-            <tbody >
+            <tbody id="logs">
 
             </tbody>
           </table>
@@ -36,5 +35,7 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript" src="{{url_for('static', filename='javascript/Logs.js')}}"></script>
 <!-- fin Table-->
 {%endblock%}
