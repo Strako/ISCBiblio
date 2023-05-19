@@ -104,10 +104,10 @@ def Auditorias():
     return redirect(url_for('login'))
 
 
-@app.route('/Clientes')
-def Clientes():
+@app.route('/Lectores')
+def Lectores():
     if isLogged():
-        return render_template('Clientes.html', user=session['user'], role=session['role'])
+        return render_template('Lectores.html', user=session['user'], role=session['role'])
     return redirect(url_for('login'))
 
 @app.route('/Administrador')
@@ -117,93 +117,211 @@ def Administrador():
     return redirect(url_for('login'))
 
 
-"""#?routes for get data from API"""
+"""#?----------------------------------------------routes for get data from API----------------------------------------"""
+
+"""----------------------------------------------rutas para libros-------------------------------------------------"""
 @app.route('/getBooks', methods=['GET'])
 def getBooks():
-    token = getToken()
-    headers={
-        "Authorization": "Bearer " + token
-    }
-    res = requests.get(url='http://localhost:3000/books/get-books', headers=headers)
+    if isLogged():
+        token = getToken()
+        headers={
+            "Authorization": "Bearer " + token
+        }
+        res = requests.get(url='http://localhost:3000/books/get-books', headers=headers)
 
-    if res.status_code == 200:
-        data = res.json()
-        return jsonify(data)
-    # Hacer algo con la respuesta JSON
-    else:
-        print("Error en la solicitud:", res.status_code)
-        return jsonify('error al conectar con el servidor')
+        if res.status_code == 200:
+            data = res.json()
+            return jsonify(data)
+        # Hacer algo con la respuesta JSON
+        else:
+            print("Error en la solicitud:", res.status_code)
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
 
 @app.route('/searchBook', methods=['POST'])
 def searchBook():
-    token = getToken()
-    headers = {
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/json"
-    }
-    bookID = request.form['search']
-    res = requests.post(url='http://localhost:3000/books/get-book', headers=headers, json={"book_id": bookID})
+    if isLogged():
+        token = getToken()
+        headers = {
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }
+        bookID = request.form['search']
+        res = requests.post(url='http://localhost:3000/books/get-book', headers=headers, json={"book_id": bookID})
 
-    if res.status_code == 200:
-        data = res.json()
-        return jsonify(data)
-    # Hacer algo con la respuesta JSON
-    else:
-        print("Error en la solicitud:", res.status_code)
-        return jsonify('error al conectar con el servidor')
-
+        if res.status_code == 200:
+            data = res.json()
+            return jsonify(data)
+        # Hacer algo con la respuesta JSON
+        else:
+            print("Error en la solicitud:", res.status_code)
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
 
 @app.route('/addBook', methods=['POST'])
 def addBook():
-    data = request.get_json()
-    token = getToken()
-    headers = {
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/json"
-    }
-    #print(data)
-    res = requests.post(
-        url='http://localhost:3000/books/insert-book', headers=headers, json=data)
-    if res.status_code == 200:
-        return jsonify('ok')
-    else:
-        print("Error en la solicitud:", res.status_code)
-        return jsonify('error al conectar con el servidor')
+    if isLogged():
+        data = request.get_json()
+        token = getToken()
+        headers = {
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }
+        #print(data)
+        res = requests.post(
+            url='http://localhost:3000/books/insert-book', headers=headers, json=data)
+        if res.status_code == 200:
+            return jsonify('ok')
+        else:
+            print("Error en la solicitud:", res.status_code)
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
 
 @app.route('/updateBook', methods=['POST'])
 def updateBook():
-    data = request.get_json()
-    token = getToken()
-    headers = {
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/json"
-    }
-    #print(data)
-    res = requests.put(
-        url='http://localhost:3000/books/update-book', headers=headers, json=data)
-    if res.status_code == 200:
-        return jsonify('ok')
-    else:
-        #print("Error en la solicitud:", res.status_code)
-        return jsonify('error al conectar con el servidor')
-
+    if isLogged():
+        data = request.get_json()
+        token = getToken()
+        headers = {
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }
+        #print(data)
+        res = requests.put(
+            url='http://localhost:3000/books/update-book', headers=headers, json=data)
+        if res.status_code == 200:
+            return jsonify('ok')
+        else:
+            #print("Error en la solicitud:", res.status_code)
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
 
 @app.route('/deleteBook', methods=['POST'])
 def deleteBook():
-    data = request.get_json()
-    token = getToken()
-    headers = {
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/json"
-    }
-    print(data)
-    res = requests.delete(
-        url='http://localhost:3000/books/delete-book', headers=headers, json=data)
-    if res.status_code == 200:
-        return jsonify('ok')
-    else:
-        #print("Error en la solicitud:", res.status_code)
-        return jsonify('error al conectar con el servidor')
+    if isLogged():
+        data = request.get_json()
+        token = getToken()
+        headers = {
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }
+        print(data)
+        res = requests.delete(
+            url='http://localhost:3000/books/delete-book', headers=headers, json=data)
+        if res.status_code == 200:
+            return jsonify('ok')
+        else:
+            #print("Error en la solicitud:", res.status_code)
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+"""----------------------------------------------rutas para prestamos-------------------------------------------------"""
+@app.route('/getBorrows', methods=['GET'])
+def getBorrows():
+    if isLogged():
+        token = getToken()
+        headers={
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }
+
+        res = requests.get(url='http://localhost:3000/borrows/get-borrows', headers=headers)
+
+        if res.status_code == 200:
+            data = res.json()
+            return jsonify(data)
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+@app.route('/getBorrow', methods=['POST'])
+def getBorrow():
+    if isLogged():
+        data = request.form['search']
+        token = getToken()
+        headers={
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }
+        res = requests.post(url='http://localhost:3000/borrows/get-borrow', headers=headers, json={"borrow_id": data})
+
+        if res.status_code == 200:
+            data = res.json()
+            return jsonify(data)
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+@app.route('/getDataBorrow', methods=['POST'])
+def getDataBorrow():
+    if isLogged():
+        data = request.get_json()
+        token = getToken()
+        headers = {
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }
+        res = requests.post(url='http://localhost:3000/borrows/get-borrow', headers=headers, json=data)
+
+        if res.status_code == 200:
+            data = res.json()
+            return jsonify(data)
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+@app.route('/addBorrow', methods=['POST'])
+def addBorrow():
+    if isLogged():
+        data = request.get_json()
+        token = getToken()
+        headers={
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }
+        res = requests.post(url='http://localhost:3000/borrows/insert-borrow', headers=headers, json=data)
+        if res.status_code == 200:
+            return jsonify('ok')
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+
+@app.route('/updateBorrow', methods=['POST'])
+def updateBorrow():
+    if isLogged():
+        data = request.get_json()
+        token = getToken()
+        headers = {
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }
+        res = requests.put(url='http://localhost:3000/borrows/update-borrow', headers=headers, json=data)
+        if res.status_code == 200:
+            return jsonify('ok')
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+"""----------------------------------------------rutas para logs-------------------------------------------------"""
+@app.route('/getLogs', methods=['GET'])
+def getLogs():
+    if isLogged():
+        token = getToken()
+        headers={
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }
+        res = requests.get(
+            url='http://localhost:3000/logs/get-logs', headers=headers)
+
+        if res.status_code == 200:
+            data = res.json()
+            return jsonify(data)
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
 
 if __name__ == '__main__':
     app.run(port=5500, debug=True)
