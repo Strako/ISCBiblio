@@ -24,7 +24,6 @@
               </nav>
 
             <!----Nodal Prestamos------>
-
               <div class="modal fade" id="addBorrowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
@@ -58,7 +57,6 @@
                           <input class="form-control" id="memberId" type="number" placeholder="ID del Lector" aria-label="default input example" required>
                         </div>
                       </form>
-
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -67,11 +65,9 @@
                   </div>
                 </div>
               </div>
-
               <!----Fin nodal Prestamos------>
 
               <!----Nodal editar Prestamos------>
-
               <div class="modal fade" id="editBorrowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
@@ -105,7 +101,6 @@
                           <input class="form-control" id="newMemberId" type="number" placeholder="ID del Lector" aria-label="default input example" required>
                         </div>
                       </form>
-
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -114,9 +109,33 @@
                   </div>
                 </div>
               </div>
-
               <!----Fin nodal editar Prestamos------>
 
+              <!----Nodal Eliminar------>
+              <div class="modal fade" id="deleteBorrowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Eliminar prestamo</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                          <div id="emailHelp" class="form-text">¿Estas seguro que deseas Eliminar?</div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" id="deleteBorrow" class="btn btn-primary">Eliminar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!----Fin de Nodal Eliminar------>
 
 
               <!--fin navbar-->

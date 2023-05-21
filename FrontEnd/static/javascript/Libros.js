@@ -142,17 +142,46 @@ $(document).ready(function() {
       // Obtener el id del libro
       bookId = $(this).closest('tr').attr('bookId');
       $('#editBookModal').attr('data-bookId', bookId);
-      //console.log("bookId", bookId);
+      $.ajax({
+        url: 'http://localhost:5500/getDataBook',
+        type: 'POST',
+        data: JSON.stringify({
+          "book_id": bookId
+        }),
+        dataType: "json",
+        contentType: "application/json",
+        success: function(res) {
+          $('#newTitle').attr('placeholder', res[0].title);
+          $('#newAuthor').attr('placeholder', res[0].author);
+          $('#newCant').attr('placeholder', res[0].quantity);
+        },
+        error: function(xhr, status, error) {
+          // Ocurrió un error durante la solicitud
+          console.log("error", error);
+        }
+      });
       $('#editBookModal').modal('show');
     });
     //function to edit a book
     $('#saveChangesBook').click(function(e) {
       bookId = $('#editBookModal').attr('data-bookId');
+      titulo = $('#newTitle').val();
+      autor = $('#newAuthor').val();
+      cant = $('#newCant').val();
+      if (titulo == "") {
+        titulo = $('#newTitle').attr('placeholder');
+      }
+      if (autor == "") {
+        autor = $('#newAuthor').attr('placeholder');
+      }
+      if (cant == "") {
+        cant = $('#newCant').attr('placeholder');
+      }
       let postData = {
-        "book_id": bookId,
-          title: $('#newTitle').val(),
-          author: $('#newAuthor').val(),
-          quantity: $('#newCant').val()
+          "book_id": bookId,
+          "title": titulo,
+          "author": autor,
+          "quantity": cant
         };
       //se hace la peticion ajax para editar el libro
       $.ajax({

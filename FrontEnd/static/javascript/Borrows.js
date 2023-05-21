@@ -3,6 +3,7 @@ $(document).ready(function() {
     console.log('jQuery cargado');
 
     fetchBorrows();
+
     //funcion para obtener los prestamos
     function fetchBorrows() {
         console.log("fetching borrows from server....");
@@ -116,18 +117,41 @@ $(document).ready(function() {
             book_id: $('#bookId').val(),
             member_id: $('#memberId').val()
         };
+        //validacion para registrar libros si hay existencias
+        let book = {
+            book_id: $('#bookId').val()
+        };
+        console.log(book);
         $.ajax({
-            url: 'http://localhost:5500/addBorrow',
+            url: 'http://localhost:5500/getDataBook',
             type: 'POST',
-            data: JSON.stringify(data),
-            dataType: "json",
-            contentType: "application/json",
+            data: JSON.stringify(book),
+            contentType: 'application/json',
             success: function(res) {
-                console.log("res", res);
-                fetchBorrows();
-                //console.log("data", data);
-                $('#addBorrowModal').modal('hide');
-                toastr.success('Libro agregado al catálogo de libros.', 'Libro agregado');
+                cant = res[0].quantity;
+                if(cant > 0){
+                    $.ajax({
+                        url: 'http://localhost:5500/addBorrow',
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function(res) {
+                            console.log("res", res);
+                            fetchBorrows();
+                    //        //console.log("data", data);
+                            $('#addBorrowModal').modal('hide');
+                            toastr.success('Libro agregado al catálogo de libros.', 'Libro agregado');
+                        },
+                        error: function(xhr, status, error) {
+                            // Ocurrió un error durante la solicitud
+                            console.log("error", error);
+                        }
+                    });
+                }
+                else{
+                    toastr.error('No puedes agregar un prestamo, no hay más existencias de este libro.', 'Error');
+                }
             },
             error: function(xhr, status, error) {
                 // Ocurrió un error durante la solicitud
@@ -151,10 +175,9 @@ $(document).ready(function() {
             dataType: "json",
             contentType: "application/json",
             success: function(res) {
-                console.log("res", res);
                 $('#newAdminId').attr('placeholder', res[0].admin_id);
-                $('#newBorrowDate').attr('placeholder', res[0].borrow_date);
-                $('#newReturnDate').attr('placeholder', res[0].return_date);
+                $('#newBorrowDate').val(res[0].borrow_date);
+                $('#newReturnDate').val(res[0].return_date);
                 $('#newBookId').attr('placeholder', res[0].book_id);
                 $('#newMemberId').attr('placeholder', res[0].member_id);
             },
@@ -167,13 +190,33 @@ $(document).ready(function() {
     });
     //editar prestamo
     $('#saveEditBorrow').click(function(e) {
-        let borrow = $('#editBorrowModal').attr('data-borrow');
+        borrow = $('#editBorrowModal').attr('data-borrow');
+        borrow_date = $('#newBorrowDate').val();
+        return_date = $('#newReturnDate').val();
+        member_id = $('#newMemberId').val();
+        admin_id = $('#newAdminId').val();
+        book_id = $('#newBookId').val();
+        if (borrow_date == "") {
+            borrow_date = $('#newBorrowDate').attr('placeholder');
+        }
+        if (return_date == "") {
+            return_date = $('#newReturnDate').attr('placeholder');
+        }
+        if (member_id == "") {
+            member_id = $('#newMemberId').attr('placeholder');
+        }
+        if (admin_id == "") {
+            admin_id = $('#newAdminId').attr('placeholder');
+        }
+        if (book_id == "") {
+            book_id = $('#newBookId').attr('placeholder');
+        }
         let data = {
-            admin_id: $('#newAdminId').val(),
-            borrow_date: $('#newBorrowDate').val(),
-            return_date: $('#newReturnDate').val(),
-            book_id: $('#newBookId').val(),
-            member_id: $('#newMemberId').val(),
+            admin_id: admin_id,
+            borrow_date: borrow_date,
+            return_date: return_date,
+            book_id: book_id,
+            member_id: member_id,
             borrow_id: borrow
         };
         $.ajax({
@@ -187,6 +230,38 @@ $(document).ready(function() {
                 fetchBorrows();
                 $('#editBorrowModal').modal('hide');
                 toastr.success('Datos de prestamo actualizados.', 'Prestamo actualizado');
+            },
+            error: function(xhr, status, error) {
+                // Ocurrió un error durante la solicitud
+                console.log("error", error);
+            }
+        });
+    });
+
+    //eliminar prestamo
+    $(document).on("click", "#deleteBorrowButton", function() {
+        borrowId = $(this).closest('tr').attr('borrowId');
+        $('#deleteBorrowModal').attr('data-borrow', borrowId);
+        console.log("borrowId", borrowId);
+        $('#deleteBorrowModal').modal('show');
+    });
+
+    $('#deleteBorrow').click(function(e) {
+        borrow = $('#deleteBorrowModal').attr('data-borrow');
+        let data = {
+            borrow_id: borrow
+        };
+        $.ajax({
+            url: 'http://localhost:5500/deleteBorrow',
+            type: 'POST',
+            data: JSON.stringify(data),
+            dataType: "json",
+            contentType: "application/json",
+            success: function(res) {
+                console.log("res", res);
+                fetchBorrows();
+                $('#deleteBorrowModal').modal('hide');
+                toastr.success('Prestamo eliminado.', 'Prestamo eliminado');
             },
             error: function(xhr, status, error) {
                 // Ocurrió un error durante la solicitud
