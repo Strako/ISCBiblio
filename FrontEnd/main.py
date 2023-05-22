@@ -42,6 +42,7 @@ def signin():
         session['logged_in'] = True
         session['token'] = dataResponse['token']
         session['user'] = data['mail']
+        session['role'] = decodeToken(dataResponse['token'])['role']
         return jsonify(res.status_code)
     elif res.status_code == 401:
         return jsonify(res.json())
