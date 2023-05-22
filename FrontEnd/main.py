@@ -28,6 +28,26 @@ def decodeToken(token):
 
 def getToken():
     return session['token']
+
+#sign in route
+@app.route('/signin', methods=['POST'])
+def signin():
+    data = request.get_json()
+    headers = {
+        "Content-Type": "application/json"
+    }
+    res = requests.post(url=api_url+'signin', headers=headers, json=data)
+    if res.status_code == 200:
+        dataResponse= res.json()
+        session['logged_in'] = True
+        session['token'] = dataResponse['token']
+        session['user'] = data['mail']
+        return jsonify(res.status_code)
+    elif res.status_code == 401:
+        return jsonify(res.json())
+    else:
+        return jsonify('error al conectar con el servidor')
+
 #------------------Routes------------------
 
 #login route
@@ -35,38 +55,7 @@ def getToken():
 def login():
     if isLogged():
         return redirect(url_for('index'))
-    else:
-        #if exists a req with method POST, get the data from the form and send to backend to validate
-        if request.method == 'POST':
-            usr = request.form['usrname']
-            passwd = request.form['passwd']
-            #json data to send to the backend
-            dataSession ={
-                "mail": usr,
-                "password": passwd
-            }
-            #try send the data to the backend using the API_URL
-                #make a request to the backend
-            res = requests.post(api_url + 'signin', json=dataSession)
-            #manage res with the status code
-            if res.status_code == 200:
-                #get token from response data
-                token = res.json()['token']
-                #set session data and put the token in cookie session
-                session['logged_in'] = True
-                session['token'] = token
-                session['user'] = usr
-                session['role'] = decodeToken(token)['role']
-                return redirect(url_for('index'))
-            elif res.status_code == 401:
-                flash('Usuario o contraseña incorrectos')
-                return render_template('login.html')
-            elif res.status_code == 500:
-                flash('Error al conectar con el servidor')
-                return render_template('login.html')
-        #if not req, render the login page using render_template
-        else:
-            return render_template('login.html')
+    return render_template('login.html')
 
 #logout route
 @app.route('/logout')
@@ -80,8 +69,7 @@ def logout():
 @app.route('/')
 def index():
     if isLogged():
-        current="index"
-        return render_template('index.html', user=session['user'], role=session['role'],page = current)
+        return render_template('index.html', user=session['user'], role=session['role'])
     return redirect(url_for('login'))
 
 

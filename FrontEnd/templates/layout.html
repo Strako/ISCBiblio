@@ -17,18 +17,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
       toastr.options = {
-        closeButton: true,
-        progressBar: true,
-        positionClass: 'toast-bottom-right',
-        timeOut: 5000
-      };     
+          closeButton: false,
+          progressBar: true,
+          positionClass: 'toast-bottom-center',
+          timeOut: 5000
+      };
     </script>
 
- {%block content%}
- <!--
-   Aquí va el codigo que quieras poner
- -->
-{%endblock%}
+  {%block content%}
+  <!--
+    Aquí va el codigo que quieras poner
+  -->
+  {%endblock%}
 
     <!-- NAVBAR-->
     <nav id="miNavbar" class="navbar navbar-expand-lg bg-light">
