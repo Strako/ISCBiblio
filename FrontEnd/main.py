@@ -492,6 +492,52 @@ def addAdmin():
     return redirect(url_for('login'))
 
 
+@app.route('/getDataAdmin', methods=['POST'])
+def getDataAdmin():
+    if isLogged():
+        data = request.get_json()
+        headers = {
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+        }
+        res = requests.post(url='http://localhost:3000/admins/get-admin', headers=headers, json=data)
+        if res.status_code == 200:
+            return jsonify(res.json())
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+@app.route('/updateAdmin', methods=['POST'])
+def updateAdmin():
+    if isLogged():
+        data = request.get_json()
+        headers = {
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+        }
+        print(data)
+        res = requests.put(url='http://localhost:3000/admins/update-admin', headers=headers, json=data)
+        if res.status_code == 200:
+            return jsonify('ok')
+        else:
+            jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+@app.route('/deleteAdmin', methods=['POST'])
+def deleteAdmin():
+    if isLogged():
+        data = request.get_json()
+        headers = {
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+        }
+        res = requests.delete(url='http://localhost:3000/admins/delete-admin', headers=headers, json=data)
+        if res.status_code == 200:
+            return jsonify('ok')
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
 """----------------------------------------------rutas para logs-------------------------------------------------"""
 @app.route('/getLogs', methods=['GET'])
 def getLogs():

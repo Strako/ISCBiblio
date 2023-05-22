@@ -138,46 +138,47 @@ $(document).ready(function () {
             dataType: "json",
             contentType: "application/json",
             success: function(res){
-                $('#newMemberName').attr('placeholder', res[0].name);
-                $('#newMemberAddress').attr('placeholder', res[0].address);
-                $('#newMemberPhone').attr('placeholder', res[0].phone);
+                $('#newMailAdmin').attr('placeholder', res[0].mail);
+                $('#newPasswdAdmin').attr('placeholder', res[0].password);
+                $('#newRoleAdmin').attr('placeholder', res[0].role);
             },
             error: function(error){
                 console.log('error', error)
             }
         });
-        $('#editLectorModal').modal('show');
+        $('#editAdminModal').modal('show');
     });
 
-    $('#saveChangesLector').click(function(e){
-        lectorId = $('#editLectorModal').attr('data-member');
-        lectorName = $('#newMemberName').val();
-        lectorAddress = $('#newMemberAddress').val();
-        lectorPhone = $('#newMemberPhone').val();
-        if (lectorName == ''){
-            lectorName = $('#newMemberName').attr('placeholder');
+    $('#saveChangesAdmin').click(function(e){
+        adminId = $('#editAdminModal').attr('data-admin');
+        adminMail = $('#newMailAdmin').val();
+        adminPasswd = $('#newPasswdAdmin').val();
+        adminRole = $('#newRoleAdmin').val();
+        if (adminMail == ''){
+            adminMail = $('#newMailAdmin').attr('placeholder');
         }
-        if (lectorAddress == ''){
-            lectorAddress = $('#newMemberAddress').attr('placeholder');
+        if (adminPasswd == ''){
+            adminPasswd = $('#newPasswdAdmin').attr('placeholder');
         }
-        if (lectorPhone == ''){
-            lectorPhone = $('#newMemberPhone').attr('placeholder');
+        if (adminRole == ''){
+            adminRole = $('#newRoleAdmin').attr('placeholder');
         }
         $.ajax({
-            url:'http://localhost:5500/updateMember',
+            url:'http://localhost:5500/updateAdmin',
             type: 'POST',
             data: JSON.stringify({
-                "member_id": lectorId,
-                "name": lectorName,
-                "address": lectorAddress,
-                "phone": lectorPhone
+                "admin_id": adminId,
+                "mail": adminMail,
+                "password": adminPasswd,
+                "role": adminRole
             }),
             dataType: "json",
             contentType: "application/json",
             success: function(res){
-                $('#editLectorModal').modal('hide');
-                fetchMembers();
-                toastr.success('Lector actualizado', 'Lector actualizado');
+                $('#editAdminModal').modal('hide');
+                console.log('res', res);
+                fetchAdmins();
+                toastr.success('Administrador actualizado', 'Administrador actualizado');
             },
             error: function(error){
                 console.log('error', error)
@@ -185,34 +186,34 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on('click', '#deleteLectorButton', function(e) {
-      member = $(this).closest('tr').attr('memberId');
-      $('#deleteLectorModal').attr('data-member', member);
-      $('#deleteLectorModal').modal('show');
+    $(document).on('click', '#deleteAdminButton', function(e) {
+        admin = $(this).closest('tr').attr('adminId');
+        $('#deleteAdminModal').attr('data-admin', admin);
+        $('#deleteAdminModal').modal('show');
     });
 
-    $('#deleteLector').click(function(e) {
-      member = $('#deleteLectorModal').attr('data-member');
-      let postData = {
-        "member_id": member
-      };
+    $('#deleteAdmin').click(function(e) {
+        admin = $('#deleteAdminModal').attr('data-admin');
+        let postData = {
+            "admin_id": admin
+        };
       //se hace la peticion ajax para eliminar el libro
-      $.ajax({
-        url: 'http://localhost:5500/deleteMember',
-        type: 'POST',
-        data: JSON.stringify(postData),
-        contentType: 'application/json',
-        success: function(res) {
-          console.log("res", res);
-          $('#deleteLectorModal').modal('hide');
-          fetchMembers();
-          toastr.success('El lector fue eliminado del sistema.', 'Lector eliminado');
-        },
-        error: function(xhr, status, error) {
-          // Ocurrió un error
-          console.log("error", error);
-        }
-      });
+        $.ajax({
+            url: 'http://localhost:5500/deleteAdmin',
+            type: 'POST',
+            data: JSON.stringify(postData),
+            contentType: 'application/json',
+            success: function(res) {
+                console.log("res", res);
+                $('#deleteAdminModal').modal('hide');
+                fetchAdmins();
+                toastr.success('El administrador fue eliminado del sistema.', 'Administrador eliminado');
+            },
+            error: function(error) {
+            // Ocurrió un error
+            console.log("error", error);
+            }
+        });
     });
 
 });
