@@ -339,6 +339,158 @@ def deleteBorrow():
         else:
             return jsonify('error al conectar con el servidor')
     return redirect(url_for('login'))
+"""----------------------------------------------rutas para Lectores-------------------------------------------------"""
+@app.route('/getMembers', methods=['GET'])
+def getMembers():
+    if isLogged():
+        token = getToken()
+        headers={
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }
+
+        res = requests.get(
+            url='http://localhost:3000/members/get-members', headers=headers)
+
+        if res.status_code == 200:
+            data = res.json()
+            return jsonify(data)
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+
+@app.route('/getMember', methods=['POST'])
+def getMember():
+    if isLogged():
+        search = request.form['search']
+        data = {
+            'member_id': search
+        }
+        headers={
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+        }
+        res = requests.post(url='http://localhost:3000/members/get-member', headers=headers, json=data)
+        if res.status_code == 200:
+            data = res.json()
+            return jsonify(data)
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+@app.route('/addMember', methods=['POST'])
+def addMember():
+    if isLogged():
+        data = request.get_json()
+        headers={
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+        }
+        res = requests.post(url='http://localhost:3000/members/insert-member', headers=headers, json=data)
+        if res.status_code == 200:
+            return jsonify('ok')
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+
+@app.route('/getDataMember', methods=['POST'])
+def getDataMember():
+    if isLogged():
+        memberId = request.get_json()
+        headers = {
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+        }
+        res = requests.post(url='http://localhost:3000/members/get-member', headers=headers, json=memberId)
+        if res.status_code == 200:
+            return jsonify(res.json())
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+
+@app.route('/updateMember', methods=['POST'])
+def updateMember():
+    if isLogged():
+        request_data = request.get_json()
+        headers = {
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+        }
+        res = requests.put(url='http://localhost:3000/members/update-member', headers=headers, json=request_data)
+        if res.status_code == 200:
+            return jsonify('ok')
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+@app.route('/deleteMember', methods=['POST'])
+def deleteMember():
+    if isLogged():
+        data = request.get_json()
+        headers = {
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+        }
+        res = requests.delete(url='http://localhost:3000/members/delete-member', headers=headers, json=data)
+        if res.status_code == 200:
+            return jsonify('ok')
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+"""----------------------------------------------rutas para Admins-------------------------------------------------"""
+@app.route('/getAdmins', methods=['GET'])
+def getAdmins():
+    if isLogged():
+        headers={
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+        }
+        res = requests.get(
+            url='http://localhost:3000/admins/get-admins', headers=headers)
+        if res.status_code == 200:
+            data = res.json()
+            return jsonify(data)
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+@app.route('/getAdmin', methods=['POST'])
+def getAdmin():
+    if isLogged():
+        data = request.form['search']
+        data = {
+            'admin_id': data
+        }
+        headers={
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+        }
+        res = requests.post(url='http://localhost:3000/admins/get-admin', headers=headers, json=data)
+        if res.status_code == 200:
+            data = res.json()
+            return jsonify(data)
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
+@app.route('/addAdmin', methods=['POST'])
+def addAdmin():
+    if isLogged():
+        data = request.get_json()
+        headers={
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+        }
+        res = requests.post(url='http://localhost:3000/admins/insert-admin', headers=headers, json=data)
+        if res.status_code == 200:
+            return jsonify('ok')
+        else:
+            return jsonify('error al conectar con el servidor')
+    return redirect(url_for('login'))
+
 
 """----------------------------------------------rutas para logs-------------------------------------------------"""
 @app.route('/getLogs', methods=['GET'])
