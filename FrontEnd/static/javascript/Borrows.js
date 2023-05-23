@@ -6,7 +6,6 @@ $(document).ready(function() {
 
     //funcion para obtener los prestamos
     function fetchBorrows() {
-        console.log("fetching borrows from server....");
         $.ajax({
             url: 'http://localhost:5500/getBorrows',
             type: 'GET',
@@ -121,7 +120,6 @@ $(document).ready(function() {
         let book = {
             book_id: $('#bookId').val()
         };
-        console.log(book);
         $.ajax({
             url: 'http://localhost:5500/getDataBook',
             type: 'POST',

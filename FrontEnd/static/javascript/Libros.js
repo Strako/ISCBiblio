@@ -116,7 +116,6 @@ $(document).ready(function() {
         author: $('#autor').val(),
         quantity: $('#cant').val()
       };
-      //console.log(postData);
       $.ajax({
         url: 'http://localhost:5500/addBook',
         type: 'POST',
@@ -124,7 +123,6 @@ $(document).ready(function() {
         dataType: "json",
         contentType: "application/json",
         success: function(res) {
-          //console.log(res);
           fetchBooks();
           $('#addBookModal').modal('hide');
           toastr.success('Libro agregado al catálogo de libros.', 'Libro agregado');
@@ -155,7 +153,7 @@ $(document).ready(function() {
           $('#newAuthor').attr('placeholder', res[0].author);
           $('#newCant').attr('placeholder', res[0].quantity);
         },
-        error: function(xhr, status, error) {
+        error: function(error) {
           // Ocurrió un error durante la solicitud
           console.log("error", error);
         }
@@ -207,7 +205,6 @@ $(document).ready(function() {
     $(document).on('click', '#deleteBookButton', function(e) {
       bookId = $(this).closest('tr').attr('bookId');
       $('#deleteBookModal').attr('data-bookId', bookId);
-      //console.log("bookId", bookId);
       $('#deleteBookModal').modal('show');
     });
     //function to delete a book
@@ -216,7 +213,6 @@ $(document).ready(function() {
       let postData = {
         "book_id": bookId
       };
-      //console.log(postData);
       //se hace la peticion ajax para eliminar el libro
       $.ajax({
         url: 'http://localhost:5500/deleteBook',

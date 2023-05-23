@@ -13,124 +13,124 @@
                 <div class="container-fluid">
                   <a class="navbar-brand">Tabla Lectores</a>
                   <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control mr-sm-2" id="searchMember" type="search" placeholder="Search" aria-label="Search">
                     <span class="navbar-text" style="padding-left:1%">
                     </span>
 
                     <span class="navbar-text" style="padding-left:1%; padding-right:1% ">
-                      <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addBookModal">Registrar lector</a>
+                      <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addLectorModal">Registrar lector</a>
                     </span>
                     </form>
                 </div>
               </nav>
 
-   <!----Nodal Nuevo Lector------>
+              <!----Nodal Nuevo Lector------>
 
-   <div class="modal fade" id="AddLectoresModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Lector</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+              <div class="modal fade" id="addLectorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Lector</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
 
-          <form>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Nombre</label>
-              <input class="form-control" type="text" placeholder="Nombre del Cliente" aria-label="default input example">
-              <div id="emailHelp" class="form-text">Aqui escribe el nombre del nuevo Lector</div>
+                      <form>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                          <input class="form-control" id="memberName" type="text" placeholder="Nombre del Cliente" aria-label="default input example">
+                          <div id="emailHelp" class="form-text">Aqui escribe el nombre del nuevo Lector</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Direccion</label>
+                          <input class="form-control" id="memberAddress" type="text" placeholder="Direccion" aria-label="default input example">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Telefono</label>
+                          <input class="form-control" id="memberPhone" type="text" placeholder="Telefono" aria-label="default input example">
+                        </div>
+                      </form>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="AddLector" class="btn btn-primary">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!----Fin nodal Nuevo lector------>
+
+              <!----Nodal Editar------>
+
+              <div class="modal fade" id="editLectorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Editar lectores</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+
+                      <form>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Nuevo nombre</label>
+                          <input class="form-control" id="newMemberName" type="text" placeholder="Nombre del lector" aria-label="default input example">
+                          <div id="emailHelp" class="form-text">Aqui escribe el nuevo nombre del lector.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Nueva direccion</label>
+                          <input class="form-control" id="newMemberAddress" type="text" placeholder="Dirección del lector" aria-label="default input example">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Nuevo num telefonico</label>
+                          <input class="form-control" id="newMemberPhone" type="number" placeholder="Numero del lector" aria-label="default input example">
+                        </div>
+                      </form>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" id="saveChangesLector" class="btn btn-primary">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!----Fin de Nodal Editar------>
+
+            <!----Nodal Eliminar------>
+
+            <div class="modal fade" id="deleteLectorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Lector</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+
+                      <div class="mb-3">
+                        <div id="emailHelp" class="form-text">¿Estas seguro que deseas Eliminar?</div>
+                      </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="deleteLector" class="btn btn-primary">Eliminar</button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Direccion</label>
-              <input class="form-control" type="text" placeholder="Direccion" aria-label="default input example">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Telefono</label>
-              <input class="form-control" type="text" placeholder="Telefono" aria-label="default input example">
-            </div>
-          </form>
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button id="AddLectores" class="btn btn-primary">Guardar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!----Fin nodal Nuevo lector------>
-
-   <!----Nodal Editar------>
-
-   <div class="modal fade" id="EditLectorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Editar lectores</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <form>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Nuevo nombre</label>
-              <input class="form-control" id="newTitle" type="text" placeholder="Nombre del libro" aria-label="default input example">
-              <div id="emailHelp" class="form-text">Aqui escribe el nuevo nombre del lector.</div>
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Nueva direccion</label>
-              <input class="form-control" id="newAuthor" type="text" placeholder="Nombre del autor" aria-label="default input example">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Nuevo num telefonico</label>
-              <input class="form-control" id="newCant" type="number" placeholder="Cantidad de libros" aria-label="default input example">
-            </div>
-          </form>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" id="saveChangesLector" class="btn btn-primary">Guardar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<!----Fin de Nodal Editar------>
-
-<!----Nodal Eliminar------>
-
-<div class="modal fade" id="DeleteLectorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Lector</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-          <div class="mb-3">
-            <div id="emailHelp" class="form-text">¿Estas seguro que deseas Eliminar?</div>
-          </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" id="DeleteLectores" class="btn btn-primary">Eliminar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!----Fin de Nodal Eliminar------>
+            <!----Fin de Nodal Eliminar------>
 
               <tr>
                 <th scope="col">ID Lector</th>
@@ -140,7 +140,7 @@
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
-            <tbody >
+            <tbody id="members">
 
             </tbody>
           </table>
@@ -149,5 +149,6 @@
     </div>
   </div>
 </div>
+<script type="text/javascript" src="{{url_for('static', filename='javascript/Members.js')}}"></script>
 <!-- fin Table-->
 {%endblock%}
