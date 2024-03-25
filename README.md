@@ -8,7 +8,7 @@
   
     -DB: ISCBiblio/DB/ISCBiblio.sql
     -Nodejs files: ISCBiblio/Node
-    -Angular files: ISCBilio/Angular
+    -Frontend files: ISCBilio/Frontend
     -Jira SCRUM board: https://proyectofinal22.atlassian.net/jira/software/projects/ISC/boards/2
     
   How to start backend server:
